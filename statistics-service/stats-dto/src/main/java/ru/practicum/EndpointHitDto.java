@@ -10,8 +10,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-import static ru.practicum.dto.Constants.DATE_TIME_PATTERN;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,6 +22,6 @@ public class EndpointHitDto {
     @NotBlank(message = "IP-адрес пользователя не может быть пустым или неопределенным")
     private String ip;
     @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
 }
