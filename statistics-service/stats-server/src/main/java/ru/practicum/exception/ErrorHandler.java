@@ -16,7 +16,6 @@ public class ErrorHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidationException(MethodArgumentNotValidException e) {
-        log.info("Ошибка 400!");
         return Map.of("error", "Ошибка валидации",
                 "errorMessage", e.getMessage());
     }
@@ -24,7 +23,6 @@ public class ErrorHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> handleThrowableException(final Throwable e) {
-        log.error("Ошибка 500! {}", e.toString());
         return Map.of("error", "Internal Server Error");
     }
 }

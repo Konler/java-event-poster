@@ -37,21 +37,29 @@ public class StatsServiceImpl implements StatsService {
             throw new BadRequestException("Дата окончания не может быть ранее даты начала");
         }
         List<ViewStats> result;
-        if (uris == null) {
-            if (unique) {
-                result = endpointHitsRepository.getStatsUnique(start, end);
-            } else {
-                result = endpointHitsRepository.getAll(start, end);
-            }
+        if (unique) {
+            result = getStatsUnique(start, end, uris, unique);
         } else {
-            if (unique) {
-                result = endpointHitsRepository.getStatsUnique(start, end, uris);
-            } else {
-                result = endpointHitsRepository.getAll(start, end, uris);
-            }
+            result = getAll(start, end, uris);
         }
         return result.stream()
                 .map(ViewStatsMapper::toViewStatsDto)
                 .collect(Collectors.toList());
+    }
+
+    List<ViewStats> getStatsUnique(LocalDateTime start, LocalDateTime end, String[] uris, Boolean unique) {
+        if (uris == null) {
+            return endpointHitsRepository.getStatsUnique(start, end);
+        } else {
+            return endpointHitsRepository.getStatsUnique(start, end, uris);
+        }
+    }
+
+    List<ViewStats> getAll(LocalDateTime start, LocalDateTime end, String[] uris) {
+        if (uris == null) {
+            return endpointHitsRepository.getAll(start, end);
+        } else {
+            return endpointHitsRepository.getAll(start, end, uris);
+        }
     }
 }
