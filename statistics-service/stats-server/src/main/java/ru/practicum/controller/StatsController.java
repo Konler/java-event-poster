@@ -3,6 +3,7 @@ package ru.practicum.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.EndpointHitDto;
 import ru.practicum.ViewStatsDto;
@@ -19,7 +20,10 @@ public class StatsController {
     private final StatsService statsService;
 
     @PostMapping("/hit")
-    public void postHit(@Valid @RequestBody EndpointHitDto endpointHitDto) {
+    public void postHit(@Valid @RequestBody EndpointHitDto endpointHitDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return;
+        }
         log.info("Запрос на сохранение информации о запросе: {}", endpointHitDto);
         statsService.addHit(endpointHitDto);
     }

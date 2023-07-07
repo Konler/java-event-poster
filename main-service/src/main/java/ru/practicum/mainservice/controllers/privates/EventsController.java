@@ -7,21 +7,22 @@ import ru.practicum.mainservice.model.*;
 
 import java.util.List;
 
-
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users/{userId}/events")
 public class EventsController {
     @GetMapping
     List<EventShortDto> getEvent(@PathVariable Integer userId,
-                                 @RequestParam(name = "from", required = false) Integer from,
-                                 @RequestParam(name = "size", required = false) Integer size) {
+                                 @RequestParam(name = "from", required = false, defaultValue = "0") Integer from,
+                                 @RequestParam(name = "size", required = false,defaultValue = "10") Integer size) {
         return null;
     }
 
     @PostMapping
     EventFullDto postEvent(@PathVariable Integer userId,
                            @RequestBody NewEventDto newEventDto) {
+        log.info("Добавление нового события: {}",newEventDto);
         return null;
     }
 

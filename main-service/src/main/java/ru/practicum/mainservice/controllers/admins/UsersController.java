@@ -8,7 +8,7 @@ import ru.practicum.mainservice.model.UserDto;
 
 import java.util.List;
 
-
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin/users")
