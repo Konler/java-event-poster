@@ -3,9 +3,9 @@ package ru.practicum.mainservice.controllers.admins;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.mainservice.dto.EventFullDto;
-import ru.practicum.mainservice.model.UpdateEventAdminRequest;
-import ru.practicum.mainservice.services.admins.EventsAdminService;
+import ru.practicum.mainservice.dto.event.EventFullDto;
+import ru.practicum.mainservice.dto.event.UpdateEventAdminRequest;
+import ru.practicum.mainservice.services.EventsService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/events")
 public class EventsAdminController {
-    private final EventsAdminService eventsAdminService;
+    private final EventsService eventsService;
 
     @GetMapping
     EventFullDto searchOfEvents(@RequestParam(value = "users", required = false) List<Integer> uses,
@@ -26,14 +26,14 @@ public class EventsAdminController {
                                 @RequestParam(value = "from", required = false, defaultValue = "0") Integer from,
                                 @RequestParam(value = "size", required = false, defaultValue = "10") Integer size) {
         log.info("Поиск события");
-        return eventsAdminService.searchOfEvents(uses, states, categories, rangeStart, rangeEnd, from, size);
+        return eventsService.searchOfEvents(uses, states, categories, rangeStart, rangeEnd, from, size);
     }
 
     @PatchMapping("/{eventId}")
     EventFullDto updateEventsAndStatus(@PathVariable Integer eventId,
                                        @RequestBody @Valid UpdateEventAdminRequest updateEventAdminRequest) {
         log.info("Редактирование данных события и его статуса");
-        return eventsAdminService.updateEventsAndStatus(eventId, updateEventAdminRequest);
+        return eventsService.updateEventsAndStatus(eventId, updateEventAdminRequest);
 
     }
 

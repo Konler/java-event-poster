@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>explore-with-me</artifactId>
+        <artifactId>java-explore-with-me</artifactId>
         <groupId>ru.practicum</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

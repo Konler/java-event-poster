@@ -19,7 +19,7 @@ services:
     ports:
       - "6541:5432"
     environment:
-      - POSTGRES_DB=ewm-stats
+      - POSTGRES_DB=stats_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
 
@@ -36,12 +36,12 @@ services:
 #      - SPRING_DATASOURCE_USERNAME=root
 #      - SPRING_DATASOURCE_PASSWORD=root
 #
-  ewm-db:
+  main-db:
     image: postgres:14-alpine
-    container_name: ewm-db-container
+    container_name: main-db-container
     ports:
       - "6542:5432"
     environment:
-      - POSTGRES_DB=ewm-db
+      - POSTGRES_DB=main_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root

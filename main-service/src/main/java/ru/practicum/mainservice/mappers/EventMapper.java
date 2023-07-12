@@ -1,11 +1,10 @@
 package ru.practicum.mainservice.mappers;
 
 import lombok.experimental.UtilityClass;
-import ru.practicum.mainservice.dto.EventFullDto;
-import ru.practicum.mainservice.dto.EventShortDto;
-import ru.practicum.mainservice.model.UpdateEventAdminRequest;
-import ru.practicum.mainservice.model.entities.Event;
-import ru.practicum.mainservice.repositories.EventRepository;
+import ru.practicum.mainservice.dto.event.EventFullDto;
+import ru.practicum.mainservice.dto.event.EventShortDto;
+import ru.practicum.mainservice.model.Event;
+//import ru.practicum.mainservice.repositories.EventRepository;
 @UtilityClass
 public class EventMapper {
    EventShortDto fromEventToEventShortDto(Event event){

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.mainservice.dto.ParticipationRequestDto;
-import ru.practicum.mainservice.services.privates.ParticipationRequestPrivateService;
+import ru.practicum.mainservice.services.RequestService;
 
 import java.util.List;
 
@@ -13,26 +13,26 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/users/{userId}/requests")
 public class ParticipationRequestPrivateController {
-    private final ParticipationRequestPrivateService participationRequestPrivateService;
+    private final RequestService requestService;
 
     @GetMapping
     List<ParticipationRequestDto> getInfoAboutPartisipationInAlienEvent(@PathVariable Integer userId) {
         log.info("Получение информации о заявках текущего пользователя на участие в чужих событиях");
-        return participationRequestPrivateService.getInfoAboutPartisipationInAlienEvent(userId);
+        return requestService.getInfoAboutPartisipationInAlienEvent(userId);
     }
 
     @PostMapping
     ParticipationRequestDto addRequestOfCurrentUserForParticipateInEvent(@PathVariable Integer userId,
                                                                          @RequestParam("eventId") Integer eventId) {
         log.info("Добавление запроса от текущего пользователя на участие в событии");
-        return participationRequestPrivateService.addRequestOfCurrentUserForParticipateInEvent(userId, eventId);
+        return requestService.addRequestOfCurrentUserForParticipateInEvent(userId, eventId);
     }
 
     @PatchMapping("/{requestsId}/cancel")
     ParticipationRequestDto cancelOfRequestForParticipate(@PathVariable Integer userId,
                                                           @PathVariable Integer requestsId) {
         log.info("Отмена своего запроса на участие в событии");
-        return participationRequestPrivateService.cancelOfRequestForParticipate(userId, requestsId);
+        return requestService.cancelOfRequestForParticipate(userId, requestsId);
     }
 
 }

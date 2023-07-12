@@ -4,8 +4,8 @@ package ru.practicum.mainservice.controllers.publics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.mainservice.dto.CompilationDto;
-import ru.practicum.mainservice.services.publics.CompilationEventsPublicService;
+import ru.practicum.mainservice.dto.compilation.CompilationDto;
+import ru.practicum.mainservice.services.CompilationService;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/compilations")
 public class CompilationEventsPublicController {
-    private final CompilationEventsPublicService compilationEventsPublicService;
+    private final CompilationService compilationService;
 
 
     @GetMapping
@@ -22,12 +22,12 @@ public class CompilationEventsPublicController {
                                           @RequestParam(name = "from", required = false, defaultValue = "0") Integer from,
                                           @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
         log.info("Получение подборок событий");
-        return compilationEventsPublicService.getEvents(pinned, from, size);
+        return compilationService.getEvents(pinned, from, size);
     }
 
     @GetMapping("/{compId}")
     public CompilationDto getCompilationById(@PathVariable Integer compId) {
         log.info("Получеие подборки событий по его id: {}", compId);
-        return compilationEventsPublicService.getCompilationById(compId);
+        return compilationService.getCompilationById(compId);
     }
 }

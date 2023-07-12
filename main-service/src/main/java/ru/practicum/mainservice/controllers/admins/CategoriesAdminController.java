@@ -2,10 +2,11 @@ package ru.practicum.mainservice.controllers.admins;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.mainservice.dto.CategoryDto;
-import ru.practicum.mainservice.dto.NewCategoryDto;
-import ru.practicum.mainservice.services.admins.CategoriesAdminService;
+import ru.practicum.mainservice.dto.category.CategoryDto;
+import ru.practicum.mainservice.dto.category.NewCategoryDto;
+import ru.practicum.mainservice.services.CategoriesService;
 
 import javax.validation.Valid;
 
@@ -14,25 +15,30 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/admin/categories")
 public class CategoriesAdminController {
-    private final CategoriesAdminService categoriesAdminService;
 
-    @PostMapping
-    CategoryDto addCategory(@RequestBody @Valid NewCategoryDto newCategoryDto) {
-        log.info("Добавление новой категории: {}", newCategoryDto);
-        return categoriesAdminService.addCategory(newCategoryDto);
+    private final CategoriesService categoriesService;
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoryDto createCategory(@RequestBody @Valid NewCategoryDto newCategoryDto) {
+        log.info("Received a request to create a category");
+        CategoryDto categoryDto = categoriesService.addCategory(newCategoryDto);
+        log.info("Category id={} successfully created", categoryDto.getId());
+        return categoryDto;
     }
 
-    @DeleteMapping("/catId")
-    void deleteCategoryById(@PathVariable Integer id) {
+    @DeleteMapping("/{catId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteCategoryById(@PathVariable Integer catId) {
         log.info("Удаление категории");
-        categoriesAdminService.deleteCategoryById(id);
+        categoriesService.deleteCategoryById(catId);
 
     }
 
-    @PatchMapping("/catId")
+    @PatchMapping("/{catId}")
     CategoryDto updateCategory(@PathVariable Integer catId, @RequestBody @Valid CategoryDto categoryDto) {
         log.info("Изменение категории по id: {}", catId);
-        return categoriesAdminService.updateCategory(catId, categoryDto);
+        return categoriesService.updateCategory(catId, categoryDto);
     }
 }
 

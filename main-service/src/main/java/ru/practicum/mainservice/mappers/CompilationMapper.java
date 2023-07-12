@@ -1,9 +1,9 @@
 package ru.practicum.mainservice.mappers;
 
-import ru.practicum.mainservice.dto.CompilationDto;
-import ru.practicum.mainservice.dto.NewCompilationDto;
-import ru.practicum.mainservice.model.UpdateCompilationRequest;
-import ru.practicum.mainservice.model.entities.Compilation;
+import ru.practicum.mainservice.dto.compilation.CompilationDto;
+import ru.practicum.mainservice.dto.compilation.NewCompilationDto;
+import ru.practicum.mainservice.dto.compilation.UpdateCompilationRequest;
+import ru.practicum.mainservice.model.Compilation;
 
 import java.util.Collections;
 import java.util.stream.Collectors;
