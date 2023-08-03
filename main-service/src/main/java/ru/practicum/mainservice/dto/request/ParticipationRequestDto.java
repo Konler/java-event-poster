@@ -1,17 +1,18 @@
-package ru.practicum.mainservice.dto;
+package ru.practicum.mainservice.dto.request;
 
 import lombok.Builder;
 import lombok.Data;
+import ru.practicum.mainservice.enums.StatusRequest;
 
 import java.time.LocalDateTime;
 @Builder
 @Data
 public class ParticipationRequestDto {
-
-    LocalDateTime created;
-    Integer event;
     Integer id;
+
+    String created;
+    Integer event;
     Integer requester;
-    String Status;
+   StatusRequest status;
 
 }

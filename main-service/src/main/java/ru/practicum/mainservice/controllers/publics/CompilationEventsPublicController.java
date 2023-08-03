@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.mainservice.dto.compilation.CompilationDto;
 import ru.practicum.mainservice.services.CompilationService;
-
 import java.util.List;
 
 @Slf4j
@@ -16,16 +15,16 @@ import java.util.List;
 public class CompilationEventsPublicController {
     private final CompilationService compilationService;
 
-
-    @GetMapping
+    @GetMapping//есть
     public List<CompilationDto> getEvents(@RequestParam(name = "pinned", required = false) Boolean pinned,
                                           @RequestParam(name = "from", required = false, defaultValue = "0") Integer from,
                                           @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
         log.info("Получение подборок событий");
-        return compilationService.getEvents(pinned, from, size);
+        List<CompilationDto> с=compilationService.getEvents(pinned, from, size);
+        return с;
     }
 
-    @GetMapping("/{compId}")
+    @GetMapping("/{compId}")//есть
     public CompilationDto getCompilationById(@PathVariable Integer compId) {
         log.info("Получеие подборки событий по его id: {}", compId);
         return compilationService.getCompilationById(compId);

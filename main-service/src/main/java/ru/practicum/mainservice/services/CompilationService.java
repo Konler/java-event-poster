@@ -9,7 +9,7 @@ import java.util.List;
 public interface CompilationService {
     CompilationDto addNewCompilations(NewCompilationDto newCompilationDto);
 
-    void deleteUser(Integer compId);
+    void deleteCompilation(Integer compId);
 
     CompilationDto updateCompilation(Integer compId, UpdateCompilationRequest updateCompilationRequest);
 

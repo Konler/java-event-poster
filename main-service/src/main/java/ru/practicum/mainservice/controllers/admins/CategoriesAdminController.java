@@ -18,7 +18,7 @@ public class CategoriesAdminController {
 
     private final CategoriesService categoriesService;
 
-    @PostMapping()
+    @PostMapping()//есть
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryDto createCategory(@RequestBody @Valid NewCategoryDto newCategoryDto) {
         log.info("Received a request to create a category");
@@ -27,7 +27,7 @@ public class CategoriesAdminController {
         return categoryDto;
     }
 
-    @DeleteMapping("/{catId}")
+    @DeleteMapping("/{catId}")//есть
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteCategoryById(@PathVariable Integer catId) {
         log.info("Удаление категории");
@@ -35,7 +35,7 @@ public class CategoriesAdminController {
 
     }
 
-    @PatchMapping("/{catId}")
+    @PatchMapping("/{catId}")//есть
     CategoryDto updateCategory(@PathVariable Integer catId, @RequestBody @Valid CategoryDto categoryDto) {
         log.info("Изменение категории по id: {}", catId);
         return categoriesService.updateCategory(catId, categoryDto);

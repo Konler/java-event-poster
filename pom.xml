@@ -16,6 +16,7 @@
         <module>statistics-service</module>
     </modules>
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

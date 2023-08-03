@@ -1,34 +1,70 @@
 package ru.practicum.mainservice.model;
 
-import lombok.Builder;
-import lombok.Data;
-import ru.practicum.mainservice.dto.category.CategoryDto;
-import ru.practicum.mainservice.dto.user.UserShortDto;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.practicum.mainservice.enums.StateOfEvent;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@Entity
+@Table(name = "events")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Event {
-    Integer id;
-    String annotation;
-    CategoryDto category;
-    Integer confirmedRequests;
-    LocalDateTime createdOn;
-    String description;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id; //----
 
-    LocalDateTime eventDate;
-    UserShortDto initiator;
-    Location location;
-    Boolean paid;
+    @Column(name = "annotation", nullable = false, length = 2000)
+     String annotation;
 
-    Integer participantLimit;
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID" )
+     Category category;
 
-    LocalDateTime publishedOn;
+    @Column(name = "created_on")
+     LocalDateTime createdOn; //-----------
 
-    Boolean requestModeration;
-    StateOfEvent state;
-    String title;
-    Integer views;
+    @Column(name = "description")
+     String description;
+
+    @Column(name = "event_date", nullable = false)
+     LocalDateTime eventDate;
+
+    @ManyToOne
+    @JoinColumn(name = "initiator_id")
+     User initiator;
+
+    @OneToOne
+    @JoinColumn(name = "location")
+     Location location;
+
+    @Column(name = "paid")
+     Boolean paid;
+
+    @Column(name = "participant_limit")
+     Integer participantLimit;
+
+    @Column(name = "published_on")
+     LocalDateTime publishedOn;//------------
+
+    @Column(name = "request_moderation")
+     Boolean requestModeration;
+
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
+     StateOfEvent state ; //------------------
+
+    @Column(name = "title")
+     String title;
+
+    @ManyToOne(cascade = CascadeType.ALL)//добавить в таблицу events колонку compilation_id
+    @JoinColumn(name = "compilation_id")
+     Compilation compilation;
 }

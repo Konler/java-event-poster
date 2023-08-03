@@ -1,22 +1,28 @@
 package ru.practicum.mainservice.mappers;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.practicum.mainservice.dto.compilation.CompilationDto;
 import ru.practicum.mainservice.dto.compilation.NewCompilationDto;
 import ru.practicum.mainservice.dto.compilation.UpdateCompilationRequest;
+import ru.practicum.mainservice.exceptions.NotFoundException;
 import ru.practicum.mainservice.model.Compilation;
+import ru.practicum.mainservice.repositories.EventRepository;
 
 import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class CompilationMapper {
 
-    Compilation fromNewCompilationDtoToCompilation(NewCompilationDto newCompilationDto) {
+    public static Compilation fromNewCompilationDtoToCompilation(NewCompilationDto newCompilationDto) {
         return Compilation.builder()
-                .pinned(newCompilationDto.getPinned()).title(newCompilationDto.getTitle()).
-                build();
+                .pinned(newCompilationDto.getPinned())
+                .title(newCompilationDto.getTitle())
+                .build();
     }
 
-    CompilationDto fromCompilationToCompilationDto(Compilation compilation) {
+    public static CompilationDto fromCompilationToCompilationDto(Compilation compilation) {
 
         return CompilationDto.builder()
                 .id(compilation.getId())
@@ -28,8 +34,10 @@ public class CompilationMapper {
                 .build();
     }
 
-    Compilation fromUpdateCompilationRequestToCompilation(UpdateCompilationRequest updateCompilationRequest) {
+    public static Compilation fromUpdateCompilationRequestToCompilation(UpdateCompilationRequest updateCompilationRequest) {
         return Compilation.builder().pinned(updateCompilationRequest.getPinned())
                 .title(updateCompilationRequest.getTitle()).build();
     }
+
+
 }
