@@ -2,6 +2,8 @@ package ru.practicum.mainservice.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.practicum.mainservice.dto.compilation.CompilationDto;
 import ru.practicum.mainservice.dto.compilation.NewCompilationDto;
@@ -53,9 +55,20 @@ public class CompilationServiceImpl implements CompilationService {
 
     @Override
     public List<CompilationDto> getEvents(Boolean pinned, Integer from, Integer size) {
-                List<CompilationDto> c=  compilationRepository.findAll(General.toPage(from, size)).stream()
-                .map(CompilationMapper::fromCompilationToCompilationDto).collect(Collectors.toList());
-                return c;
+        log.info("Получение списка всех подборок событий");
+        List<Compilation> compilations;
+        PageRequest pageable = General.toPage(from, size, Sort.unsorted());
+        if (pinned==null){
+            pinned=false;
+        }
+        if (pinned) {
+            compilations = compilationRepository.findAllByPinned(pinned, pageable);
+        } else {
+            compilations = compilationRepository.findAll(pageable).getContent();
+        }
+        return compilations.stream()
+                .map(CompilationMapper::fromCompilationToCompilationDto)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -6,6 +6,7 @@ import ru.practicum.mainservice.enums.StateOfEvent;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -64,7 +65,6 @@ public class Event {
     @Column(name = "title")
      String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)//добавить в таблицу events колонку compilation_id
-    @JoinColumn(name = "compilation_id")
-     Compilation compilation;
+    @ManyToMany(mappedBy = "events")
+    private List<Compilation> compilations;
 }

@@ -20,7 +20,9 @@ public class Compilation {
 
     //  @Column(name = "events",unique = true)
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compilation")
+    @ManyToMany
+    @JoinTable(name = "compilation_event", joinColumns = @JoinColumn(name = "compilation_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"))
     List<Event> events;
 
     @Column(name = "pinned", nullable = false)
