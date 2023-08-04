@@ -283,12 +283,12 @@ public class EventsServiceImpl implements EventsService {
         if (paid != null) builder.and(QEvent.event.paid.eq(paid));
         if (rangeStart != null) builder.and(QEvent.event.eventDate.after(rangeStart));
         if (rangeEnd != null) builder.and(QEvent.event.eventDate.before(rangeEnd));
-        if (sort != null && sort.equals("EVENT_DATE")) {
+        if (sort != null && sort.equals(EventSort.EVENT_DATE)) {
             pageRequest = General.toPage(from, size, Sort.by("eventDate"));
         } else {
             pageRequest = General.toPage(from, size);
         }
-        if (sort != null && sort.equals("VIEWS")) {
+        if (sort != null && sort.equals(EventSort.VIEWS)) {
             List<Event> events = eventRepository.findByState(StateOfEvent.PUBLISHED);
             List<EventFullDto> list = getEventFullDto(events);
             if (onlyAvailable) {
@@ -306,7 +306,7 @@ public class EventsServiceImpl implements EventsService {
 
             }
         }
-        if (builder.getValue() == null && sort != null && sort.equals("EVENT_DATE")) {
+        if (builder.getValue() == null && sort != null && sort.equals(EventSort.EVENT_DATE)) {
             List<EventFullDto> list = getEventFullDto(eventRepository.findByState(StateOfEvent.PUBLISHED));
             if (onlyAvailable) {
                 return list.stream()
@@ -323,9 +323,7 @@ public class EventsServiceImpl implements EventsService {
 
             }
         }
-
         expression = builder.getValue() == null ? QEvent.event.isNotNull() : Expressions.asBoolean(builder.getValue());
-
         return getEventFullDto(eventRepository.findAll(expression, pageRequest).toList())
                 .stream()
                 .map(EventMapper::toEventShortDto)
