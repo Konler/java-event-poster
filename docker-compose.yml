@@ -9,7 +9,7 @@ services:
     depends_on:
       - stats-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats-db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats_db
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
 
@@ -33,10 +33,10 @@ services:
       - main-db
       - stats-server
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/main-db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5432/main_db
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-#
+
   main-db:
     image: postgres:14-alpine
     container_name: main-db-container
