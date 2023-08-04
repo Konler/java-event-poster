@@ -21,7 +21,7 @@ public class StatsController {
 
     @PostMapping("/hit")
     public void postHit(@Valid @RequestBody EndpointHitDto endpointHitDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return;
         }
         log.info("Запрос на сохранение информации о запросе: {}", endpointHitDto);
