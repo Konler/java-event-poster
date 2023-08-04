@@ -204,7 +204,7 @@ public class EventsServiceImpl implements EventsService {
         if (!event.getInitiator().getId().equals(userId)) {
             throw new UncorrectRequestException("Данный пользователь не является инициатором события");
         }
-        if (event.getParticipantLimit() == 0 | !event.getRequestModeration()) {
+        if (event.getParticipantLimit() == 0 || !event.getRequestModeration()) {
             log.error("Лимит заявок равен 0 или отключена пре-модерация заявок");
             throw new ParticipantLimitException("Лимит заявок равен 0 или отключена пре-модерация заявок");
         }
