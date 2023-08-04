@@ -21,8 +21,7 @@ public class CompilationEventsPublicController {
                                           @RequestParam(name = "from", required = false, defaultValue = "0") Integer from,
                                           @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
         log.info("Получение подборок событий");
-        List<CompilationDto> с = compilationService.getEvents(pinned, from, size);
-        return с;
+        return compilationService.getEvents(pinned, from, size);
     }
 
     @GetMapping("/{compId}")//есть
