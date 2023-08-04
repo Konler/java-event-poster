@@ -1,14 +1,9 @@
 package ru.practicum.mainservice.mappers;
 
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.practicum.mainservice.dto.compilation.CompilationDto;
 import ru.practicum.mainservice.dto.compilation.NewCompilationDto;
 import ru.practicum.mainservice.dto.compilation.UpdateCompilationRequest;
-import ru.practicum.mainservice.exceptions.NotFoundException;
 import ru.practicum.mainservice.model.Compilation;
-import ru.practicum.mainservice.repositories.EventRepository;
 
 import java.util.Collections;
 import java.util.stream.Collectors;

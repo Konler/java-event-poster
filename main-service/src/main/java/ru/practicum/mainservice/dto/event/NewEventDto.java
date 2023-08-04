@@ -9,6 +9,7 @@ import ru.practicum.mainservice.model.Location;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -31,17 +32,17 @@ public class NewEventDto {
 
     Location location;
 
-     @Value("false")
+    @Value("false")
 
-    private Boolean paid=false;
+    private Boolean paid = false;
 
     @Value("0")
 
-    Integer participantLimit=0;
+    Integer participantLimit = 0;
 
     @Value("true")
 
-    Boolean requestModeration=true;
+    Boolean requestModeration = true;
 
     @Size(min = 3, max = 120, message = "Длина заголовка ")
     String title;

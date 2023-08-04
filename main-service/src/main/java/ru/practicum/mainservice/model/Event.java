@@ -23,47 +23,47 @@ public class Event {
     Integer id; //----
 
     @Column(name = "annotation", nullable = false, length = 2000)
-     String annotation;
+    String annotation;
 
     @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID" )
-     Category category;
+    @JoinColumn(name = "CATEGORY_ID")
+    Category category;
 
     @Column(name = "created_on")
-     LocalDateTime createdOn; //-----------
+    LocalDateTime createdOn; //-----------
 
     @Column(name = "description")
-     String description;
+    String description;
 
     @Column(name = "event_date", nullable = false)
-     LocalDateTime eventDate;
+    LocalDateTime eventDate;
 
     @ManyToOne
     @JoinColumn(name = "initiator_id")
-     User initiator;
+    User initiator;
 
     @OneToOne
     @JoinColumn(name = "location")
-     Location location;
+    Location location;
 
     @Column(name = "paid")
-     Boolean paid;
+    Boolean paid;
 
     @Column(name = "participant_limit")
-     Integer participantLimit;
+    Integer participantLimit;
 
     @Column(name = "published_on")
-     LocalDateTime publishedOn;//------------
+    LocalDateTime publishedOn;//------------
 
     @Column(name = "request_moderation")
-     Boolean requestModeration;
+    Boolean requestModeration;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
-     StateOfEvent state ; //------------------
+    StateOfEvent state; //------------------
 
     @Column(name = "title")
-     String title;
+    String title;
 
     @ManyToMany(mappedBy = "events")
     private List<Compilation> compilations;

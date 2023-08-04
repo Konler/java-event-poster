@@ -33,11 +33,12 @@ public class CompilationEventsAdminController {
         compilationService.deleteCompilation(compId);
     }
 
-    @PatchMapping("/{compId}")//
+    @PatchMapping("/{compId}")
+//
     CompilationDto updateCompilation(@PathVariable Integer compId,
                                      @RequestBody @Valid UpdateCompilationRequest updateCompilationRequest) {
         log.info("Обновить информацию о подборке");
-        CompilationDto compilationDto=compilationService.updateCompilation(compId, updateCompilationRequest);
+        CompilationDto compilationDto = compilationService.updateCompilation(compId, updateCompilationRequest);
         return compilationDto;
     }
 

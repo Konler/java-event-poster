@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
         Event event = eventsService.getEventById(eventId);
         User user = findUserById(userId);
-        if(requestService.findByEventAndRequester(eventId,userId)!=null){
+        if (requestService.findByEventAndRequester(eventId, userId) != null) {
             throw new ConflictModerationException("Такой запрос уже существует");
         }
         if (event.getInitiator().equals(user)) {

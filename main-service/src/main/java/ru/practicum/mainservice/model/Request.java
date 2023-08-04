@@ -1,7 +1,6 @@
 package ru.practicum.mainservice.model;
 
 import lombok.*;
-import ru.practicum.mainservice.enums.StateOfEvent;
 import ru.practicum.mainservice.enums.StatusRequest;
 
 import javax.persistence.*;
@@ -24,11 +23,11 @@ public class Request {
     LocalDateTime created;
 
     @Column(name = "event_id")
-    @JoinColumn (table = "events",name = "id")
+    @JoinColumn(table = "events", name = "id")
     Integer event;
 
     @Column(name = "requester_id")
-    @JoinColumn (table = "users",name = "id")
+    @JoinColumn(table = "users", name = "id")
     Integer requester;
 
     @Column(name = "status")

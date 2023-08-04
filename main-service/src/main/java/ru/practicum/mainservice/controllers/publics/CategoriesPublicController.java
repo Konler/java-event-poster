@@ -15,14 +15,16 @@ import java.util.List;
 public class CategoriesPublicController {
     private final CategoriesService categoriesService;
 
-    @GetMapping //есть
+    @GetMapping
+        //есть
     List<CategoryDto> getCategories(@RequestParam(name = "from", defaultValue = "0") Integer from,
                                     @RequestParam(name = "size", defaultValue = "10") Integer size) {
         log.info("Получение категорий");
         return categoriesService.getCategories(from, size);
     }
 
-    @GetMapping("/{catId}")//есть
+    @GetMapping("/{catId}")
+//есть
     CategoryDto getCategoryById(@PathVariable Integer catId) {
 
         log.info("Получение инфрмации о категории по ее id: {}", catId);

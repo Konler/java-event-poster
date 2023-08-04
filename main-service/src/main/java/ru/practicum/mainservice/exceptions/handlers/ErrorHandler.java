@@ -21,6 +21,7 @@ import java.util.Arrays;
 public class ErrorHandler {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleValidationException(TimeException e) {
@@ -32,6 +33,7 @@ public class ErrorHandler {
                 HttpStatus.BAD_REQUEST.name(),
                 LocalDateTime.now());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handleValidationException(ValidationException e) {
@@ -43,6 +45,7 @@ public class ErrorHandler {
                 HttpStatus.CONFLICT.name(),
                 LocalDateTime.now());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handlerDataIntegrityViolationException(final DataIntegrityViolationException e) {
@@ -54,6 +57,7 @@ public class ErrorHandler {
                 HttpStatus.CONFLICT.getReasonPhrase(),
                 LocalDateTime.now());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handleValidationException(ConflictModerationException e) {
@@ -65,6 +69,7 @@ public class ErrorHandler {
                 HttpStatus.CONFLICT.name(),
                 LocalDateTime.now());
     }
+
     @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handleValidationException(InvocationTargetException e) {
         log.info("Ошибка 409!");
@@ -87,6 +92,7 @@ public class ErrorHandler {
                 HttpStatus.BAD_REQUEST.name(),
                 LocalDateTime.now());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handleValidationException(NotFoundException e) {
@@ -110,6 +116,7 @@ public class ErrorHandler {
                 HttpStatus.CONFLICT.name(),
                 LocalDateTime.now());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handleConflictException(final ConflictException e) {
@@ -130,7 +137,7 @@ public class ErrorHandler {
                 Arrays.toString(e.getStackTrace()),
                 e.getMessage(),
                 "The required object was not found.",
-                HttpStatus.INTERNAL_SERVER_ERROR.name(),LocalDateTime.now());
+                HttpStatus.INTERNAL_SERVER_ERROR.name(), LocalDateTime.now());
     }
 
     private String getAsString(Exception ex) {

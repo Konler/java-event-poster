@@ -1,6 +1,7 @@
 package ru.practicum.mainservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
@@ -12,11 +13,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.practicum.mainservice.ServerClient;
-import ru.practicum.mainservice.dto.HitDto;
 import ru.practicum.mainservice.dto.event.*;
 import ru.practicum.mainservice.dto.request.ParticipationRequestDto;
 import ru.practicum.mainservice.enums.EventSort;
-import ru.practicum.mainservice.enums.StateAction;
 import ru.practicum.mainservice.enums.StateOfEvent;
 import ru.practicum.mainservice.enums.StatusRequest;
 import ru.practicum.mainservice.exceptions.*;
@@ -29,7 +28,6 @@ import ru.practicum.mainservice.model.Request;
 import ru.practicum.mainservice.model.Stats;
 import ru.practicum.mainservice.repositories.EventRepository;
 import ru.practicum.mainservice.util.General;
-import com.google.gson.Gson;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;
@@ -60,7 +58,7 @@ public class EventsServiceImpl implements EventsService {
     @Override
     public EventFullDto updateEventsAndStatus(Integer eventId, UpdateEventAdminRequest updateEventAdminRequest) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Пользователь с таким id не найден" + eventId));
-        if(event.getState().equals(StateOfEvent.PUBLISHED)){
+        if (event.getState().equals(StateOfEvent.PUBLISHED)) {
             throw new ConflictException("Событие уже опубликовано");
         }
 //        if(event.getState().equals(StateOfEvent.CANCELED)){
@@ -114,7 +112,7 @@ public class EventsServiceImpl implements EventsService {
                     event.setPublishedOn(LocalDateTime.now());
                     break;
             }
-            }
+        }
         if (updateEventAdminRequest.getTitle() != null) {
             event.setTitle(updateEventAdminRequest.getTitle());
         }
@@ -144,11 +142,11 @@ public class EventsServiceImpl implements EventsService {
     @Override
     public EventFullDto updateEventAddedByCurrentUser(Integer userId, Integer eventId, UpdateEventUserRequest updateEventUserRequest) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие с id " + eventId + "не найденно"));
-        if (!event.getInitiator().getId().equals( userId)) {
+        if (!event.getInitiator().getId().equals(userId)) {
             log.error("Только организатор может менять двнные события запроса");
             throw new UncorrectRequestException("Данное событие c id" + eventId + " добавленно не текущим пользователем" + userId);
         }
-        if ((updateEventUserRequest.getEventDate()!=null&&updateEventUserRequest.getEventDate().isBefore(LocalDateTime.now().plusHours(2)))) {
+        if ((updateEventUserRequest.getEventDate() != null && updateEventUserRequest.getEventDate().isBefore(LocalDateTime.now().plusHours(2)))) {
             throw new TimeException("Дата и время на которые намечено событие не может быть раньше, чем через два часа от текущего момента");
         }
 
@@ -343,7 +341,7 @@ public class EventsServiceImpl implements EventsService {
             throw new NotFoundException("Событие не найдено");
         }
         /*todo*/
-         return getEventFullDto(List.of(event)).get(0);
+        return getEventFullDto(List.of(event)).get(0);
 
     }
 

@@ -58,8 +58,8 @@ public class CompilationServiceImpl implements CompilationService {
         log.info("Получение списка всех подборок событий");
         List<Compilation> compilations;
         PageRequest pageable = General.toPage(from, size, Sort.unsorted());
-        if (pinned==null){
-            pinned=false;
+        if (pinned == null) {
+            pinned = false;
         }
         if (pinned) {
             compilations = compilationRepository.findAllByPinned(pinned, pageable);

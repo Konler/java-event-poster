@@ -14,5 +14,6 @@ public interface CompilationService {
     CompilationDto updateCompilation(Integer compId, UpdateCompilationRequest updateCompilationRequest);
 
     public List<CompilationDto> getEvents(Boolean pinned, Integer from, Integer size);
-    public CompilationDto getCompilationById( Integer compId);
+
+    public CompilationDto getCompilationById(Integer compId);
 }

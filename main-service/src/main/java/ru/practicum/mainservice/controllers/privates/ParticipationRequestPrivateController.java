@@ -19,21 +19,24 @@ public class ParticipationRequestPrivateController {
     private final RequestService requestService;
     private final UserService userService;
 
-    @GetMapping//есть
+    @GetMapping
+//есть
     List<ParticipationRequestDto> getInfoAboutPartisipationInAlienEvent(@PathVariable Integer userId) {
         log.info("Получение информации о заявках текущего пользователя на участие в чужих событиях");
         return requestService.getInfoAboutPartisipationInAlienEvent(userId);
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)//есть
+    @ResponseStatus(HttpStatus.CREATED)
+//есть
     ParticipationRequestDto addRequest(@PositiveOrZero @PathVariable Integer userId, @PositiveOrZero @RequestParam("eventId") Integer eventId) {
         log.info("Добавление запроса от текущего пользователя на участие в событии");
-        ParticipationRequestDto participationRequestDto=userService.addRequestOfCurrentUserForParticipateInEvent(userId, eventId);
+        ParticipationRequestDto participationRequestDto = userService.addRequestOfCurrentUserForParticipateInEvent(userId, eventId);
         return participationRequestDto;
     }
 
-    @PatchMapping("/{requestsId}/cancel")//есть
+    @PatchMapping("/{requestsId}/cancel")
+//есть
     ParticipationRequestDto cancelOfRequestForParticipate(@PathVariable Integer userId,
                                                           @PathVariable Integer requestsId) {
         log.info("Отмена своего запроса на участие в событии");

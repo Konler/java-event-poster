@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.practicum.mainservice.dto.request.ParticipationRequestDto;
-import ru.practicum.mainservice.enums.StatusOfParticipationEvent;
 import ru.practicum.mainservice.enums.StatusRequest;
 import ru.practicum.mainservice.exceptions.NotFoundException;
 import ru.practicum.mainservice.mappers.RequestMapper;
@@ -23,7 +22,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class RequestServiceImpl implements RequestService {
     private final RequestRepository requestRepository;
-
 
 
     @Override
@@ -90,12 +88,12 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public List<Request> saveAll(List<Request> ids) {
-       return requestRepository.saveAll(ids);
+        return requestRepository.saveAll(ids);
     }
 
     @Override
     public Integer countConfirmedRequest(Integer idEvent) {
-       return requestRepository.countByEventAndStatus(idEvent, StatusRequest.CONFIRMED);
+        return requestRepository.countByEventAndStatus(idEvent, StatusRequest.CONFIRMED);
     }
 
     @Override
@@ -105,10 +103,10 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public Request findByEventAndRequester(Integer eventId, Integer userId) {
-        return  requestRepository.findByEventAndRequester(eventId,userId);
+        return requestRepository.findByEventAndRequester(eventId, userId);
     }
 
-    public Request findRequestById(Integer id){
+    public Request findRequestById(Integer id) {
         return requestRepository.findById(id).orElseThrow(() -> new NotFoundException("не найден пользоатель"));
     }
 }

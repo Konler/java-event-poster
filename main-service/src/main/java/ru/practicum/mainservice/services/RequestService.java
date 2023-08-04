@@ -10,18 +10,26 @@ import java.util.Optional;
 
 public interface RequestService {
     List<ParticipationRequestDto> getInfoAboutPartisipationInAlienEvent(Integer userId);
+
     Optional<Request> findRequestByRequester(Integer integer);
+
     ParticipationRequestDto createRequest(User user, Event event);
-     Request findRequestById(Integer id);
+
+    Request findRequestById(Integer id);
+
     ParticipationRequestDto addRequestOfCurrentUserForParticipateInEvent(Integer userId, Integer eventId);
 
     ParticipationRequestDto cancelOfRequestForParticipate(Integer userId, Integer requestsId);
 
     List<Request> findAllByEvent(Integer eventId);
+
     List<Request> findAllByIds(List<Integer> eventIds);
 
-    List<Request>  saveAll(List<Request> ids);
+    List<Request> saveAll(List<Request> ids);
+
     Integer countConfirmedRequest(Integer idEvent);
+
     Request validateParticipateOfUser(Integer userId, Integer eventId);
+
     Request findByEventAndRequester(Integer eventId, Integer userId);
 }

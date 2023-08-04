@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.Size;
 import java.util.List;
+
 @Builder
 @Data
 public class UpdateCompilationRequest {

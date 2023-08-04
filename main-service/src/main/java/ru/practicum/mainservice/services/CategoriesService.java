@@ -14,6 +14,8 @@ public interface CategoriesService {
     CategoryDto updateCategory(Integer catId, CategoryDto categoryDto);
 
     List<CategoryDto> getCategories(Integer from, Integer size);
-    CategoryDto getCategoryById( Integer catId);
+
+    CategoryDto getCategoryById(Integer catId);
+
     Category findById(Integer id);
 }

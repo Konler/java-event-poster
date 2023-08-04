@@ -4,8 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import ru.practicum.mainservice.dto.event.EventShortDto;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
+
 @Builder
 @Data
 public class CompilationDto {

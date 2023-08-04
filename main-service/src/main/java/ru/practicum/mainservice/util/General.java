@@ -11,6 +11,7 @@ public class General {
     public PageRequest toPage(Integer from, Integer size) {
         return PageRequest.of(from > 0 ? from / size : 0, size);
     }
+
     public static final DateTimeFormatter SERVER_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static final String MIN_TIME = "2000-01-01 00:00:00";

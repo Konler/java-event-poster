@@ -4,8 +4,6 @@ package ru.practicum.mainservice.dto.event;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.format.annotation.DateTimeFormat;
-import ru.practicum.mainservice.enums.StateAction;
 import ru.practicum.mainservice.enums.StateForUpdateEventUserRequest;
 import ru.practicum.mainservice.model.Location;
 
@@ -13,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder

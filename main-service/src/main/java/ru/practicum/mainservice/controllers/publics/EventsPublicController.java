@@ -31,7 +31,7 @@ public class EventsPublicController {
             @RequestParam(value = "rangeEnd", required = false) LocalDateTime rangeEnd,
             @RequestParam(value = "onlyAvailable", defaultValue = "false") Boolean onlyAvailable,
             @RequestParam(value = "sort", required = false) EventSort sort,
-            @RequestParam(value = "from",  defaultValue = "0") Integer from,
+            @RequestParam(value = "from", defaultValue = "0") Integer from,
             @RequestParam(value = "size", defaultValue = "10") Integer size,
             HttpServletRequest request
     ) {
@@ -46,7 +46,7 @@ public class EventsPublicController {
                                           HttpServletRequest httpServletRequest) {
         log.info("Получение подробной информации об опубликованном событии по его id: {}", id);
         serverClient.create(httpServletRequest);
-        return eventsService.getAllInfoAboutEventById(id,httpServletRequest);
+        return eventsService.getAllInfoAboutEventById(id, httpServletRequest);
     }
 }
 

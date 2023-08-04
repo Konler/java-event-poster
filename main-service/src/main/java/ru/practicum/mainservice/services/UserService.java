@@ -15,13 +15,16 @@ public interface UserService {
     List<UserDto> getInfoAboutUser(List<Integer> ids, Integer from, Integer size);
 
     UserDto addNewUser(NewUserRequest newUserRequest);
+
     void deleteUser(Integer userId);
-     User findUserById(Integer id);
+
+    User findUserById(Integer id);
 
     //фигня
     List<ParticipationRequestDto> getInfoAboutRequestsForParticipationCurrentUser(Integer userId, Integer eventId);
 
     EventFullDto postEvent(Integer userId, NewEventDto newEventDto);
+
     ParticipationRequestDto addRequestOfCurrentUserForParticipateInEvent(Integer userId, Integer eventId);
 
     List<EventFullDto> searchOfEvents(List<Integer> uses, List<String> states, List<Integer> categories, LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size);

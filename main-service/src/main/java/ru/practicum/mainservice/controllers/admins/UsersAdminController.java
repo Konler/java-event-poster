@@ -20,8 +20,9 @@ public class UsersAdminController {
 
     private final UserService userService;
 
-    @GetMapping//Есть
-    List<UserDto> getInfoAboutUser(@RequestParam(value = "ids",required = false) List<Integer> ids,
+    @GetMapping
+//Есть
+    List<UserDto> getInfoAboutUser(@RequestParam(value = "ids", required = false) List<Integer> ids,
                                    @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
                                    @PositiveOrZero @RequestParam(value = "size", defaultValue = "10") Integer size) {
         log.info("Получение информации о пользователях");

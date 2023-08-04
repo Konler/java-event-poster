@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 import ru.practicum.mainservice.enums.StatusRequest;
 
-import java.time.LocalDateTime;
 @Builder
 @Data
 public class ParticipationRequestDto {
@@ -13,6 +12,6 @@ public class ParticipationRequestDto {
     String created;
     Integer event;
     Integer requester;
-   StatusRequest status;
+    StatusRequest status;
 
 }
