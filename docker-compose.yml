@@ -10,8 +10,6 @@ services:
       - stats-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
 
   stats-db:
     image: postgres:14-alpine
@@ -30,12 +28,10 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - main-db
       - stats-server
+      - main-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5432/main_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
       - STATISTICS_SERVER.URL=http://stats-server-container:9090
 
   main-db:
