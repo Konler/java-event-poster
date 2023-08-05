@@ -1,5 +1,18 @@
 version: '3.1'
 services:
+  main-service:
+    build: main-service
+    image: main-service
+    container_name: main-service-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - stats-server
+      - main-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5432/main_db
+      - STATISTICS_SERVER.URL=http://stats-server-container:9090
+
   stats-server:
     build: statistics-service/stats-server
     image: statistics-server
@@ -20,19 +33,6 @@ services:
       - POSTGRES_DB=stats_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-
-  main-service:
-    build: main-service
-    image: main-service
-    container_name: main-service-container
-    ports:
-      - "8080:8080"
-    depends_on:
-      - stats-server
-      - main-db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5432/main_db
-      - STATISTICS_SERVER.URL=http://stats-server-container:9090
 
   main-db:
     image: postgres:14-alpine
