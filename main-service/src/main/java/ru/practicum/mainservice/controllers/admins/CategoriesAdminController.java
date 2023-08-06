@@ -18,7 +18,7 @@ public class CategoriesAdminController {
 
     private final CategoriesService categoriesService;
 
-    @PostMapping()//есть
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryDto createCategory(@RequestBody @Valid NewCategoryDto newCategoryDto) {
         log.info("Received a request to create a category");
