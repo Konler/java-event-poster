@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   main-service:
-    build: main-service
+    build: ./main-service
     image: main-service
     container_name: main-service-container
     ports:
@@ -14,7 +14,7 @@ services:
       - STATISTICS_SERVER.URL=http://stats-server-container:9090
 
   stats-server:
-    build: statistics-service/stats-server
+    build: ./statistics-service
     image: statistics-server
     container_name: stats-server-container
     ports:
@@ -22,7 +22,7 @@ services:
     depends_on:
       - stats-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db-container:5432/stats_db
 
   stats-db:
     image: postgres:14-alpine
