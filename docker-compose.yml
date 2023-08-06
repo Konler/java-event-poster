@@ -14,7 +14,7 @@ services:
       - STATISTICS_SERVER.URL=http://stats-server-container:9090
 
   stats-server:
-    build: ./statistics-service
+    build: statistics-service
     image: statistics-server
     container_name: stats-server-container
     ports:
