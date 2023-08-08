@@ -338,7 +338,6 @@ public class EventsServiceImpl implements EventsService {
             log.error("Событие не найдено");
             throw new NotFoundException("Событие не найдено");
         }
-        /*todo*/
         return getEventFullDto(List.of(event)).get(0);
 
     }

@@ -21,19 +21,19 @@ public class EventsAdminController {
     private final EventsService eventsService;
     private final UserService userService;
 
-    @GetMapping////////////////////////////
+    @GetMapping
     public List<EventFullDto> searchEvents(@RequestParam(value = "users", required = false) List<Integer> uses,
                                            @RequestParam(value = "states", required = false) List<String> states,
                                            @RequestParam(value = "categories", required = false) List<Integer> categories,
                                            @RequestParam(value = "rangeStart", required = false) LocalDateTime rangeStart,
                                            @RequestParam(value = "rangeEnd", required = false) LocalDateTime rangeEnd,
                                            @RequestParam(value = "from", required = false, defaultValue = "0") @Min(0) Integer from,
-                                           @RequestParam(value = "size", required = false, defaultValue = "10") @Min(1) Integer size) {
+                                           @RequestParam(value = "size", defaultValue = "10") @Min(1) Integer size) {
         log.info("Поиск события");
         return userService.searchOfEvents(uses, states, categories, rangeStart, rangeEnd, from, size);
     }
 
-    @PatchMapping("/{eventId}") //есть
+    @PatchMapping("/{eventId}")
     public EventFullDto updateEventsAndStatus(@PathVariable Integer eventId,
                                               @RequestBody @Valid UpdateEventAdminRequest updateEventAdminRequest) {
         log.info("Редактирование данных события и его статуса");

@@ -10,7 +10,6 @@ import java.util.List;
 @Data
 public class EventRequestStatusUpdateRequest {
     List<Integer> requestIds;
-    /*TODO*/
     StatusOfParticipationEvent status;
 
 }

@@ -22,7 +22,7 @@ public class EventsPublicController {
     private final EventsService eventsService;
     private final ServerClient serverClient;
 
-    @GetMapping////////////////////////////////////////////
+    @GetMapping
     public List<EventShortDto> getEventsWithFiltr(
             @RequestParam(value = "text", required = false) String text,
             @RequestParam(value = "categories", required = false) List<Integer> categories,
@@ -41,7 +41,6 @@ public class EventsPublicController {
     }
 
     @GetMapping("/{id}")
-        //есть
     EventFullDto getAllInfoAboutEventById(@PathVariable Integer id,
                                           HttpServletRequest httpServletRequest) {
         log.info("Получение подробной информации об опубликованном событии по его id: {}", id);

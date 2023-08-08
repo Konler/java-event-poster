@@ -27,7 +27,7 @@ public class CategoriesAdminController {
         return categoryDto;
     }
 
-    @DeleteMapping("/{catId}")//есть
+    @DeleteMapping("/{catId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteCategoryById(@PathVariable Integer catId) {
         log.info("Удаление категории");
@@ -36,7 +36,6 @@ public class CategoriesAdminController {
     }
 
     @PatchMapping("/{catId}")
-//есть
     CategoryDto updateCategory(@PathVariable Integer catId, @RequestBody @Valid CategoryDto categoryDto) {
         log.info("Изменение категории по id: {}", catId);
         return categoriesService.updateCategory(catId, categoryDto);

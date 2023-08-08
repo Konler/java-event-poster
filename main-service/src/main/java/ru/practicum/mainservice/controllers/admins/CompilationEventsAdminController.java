@@ -19,14 +19,14 @@ public class CompilationEventsAdminController {
 
     private final CompilationService compilationService;
 
-    @PostMapping//есть
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     CompilationDto addNewCompilations(@RequestBody @Valid NewCompilationDto newCompilationDto) {
         log.info("Добавление новой подборки");
         return compilationService.addNewCompilations(newCompilationDto);
     }
 
-    @DeleteMapping("/{compId}") //Есть
+    @DeleteMapping("/{compId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteUser(@PathVariable Integer compId) {
         log.info("Удаление подборки");
@@ -34,7 +34,6 @@ public class CompilationEventsAdminController {
     }
 
     @PatchMapping("/{compId}")
-//
     CompilationDto updateCompilation(@PathVariable Integer compId,
                                      @RequestBody @Valid UpdateCompilationRequest updateCompilationRequest) {
         log.info("Обновить информацию о подборке");

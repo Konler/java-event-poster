@@ -21,10 +21,9 @@ public class EventsPrivateController {
     private final UserService userService;
 
     @GetMapping
-///////////////////////
     List<EventShortDto> getEvent(@PathVariable Integer userId,
                                  @RequestParam(name = "from", required = false, defaultValue = "0") Integer from,
-                                 @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
+                                 @RequestParam(name = "size", defaultValue = "10") Integer size) {
         log.info("Получены события, добавленных текущим пользователем: {}", userId);
         return userService.getEvent(userId, from, size);
     }
@@ -57,7 +56,6 @@ public class EventsPrivateController {
     }
 
     @GetMapping("/{eventId}/requests")
-//есть
     List<ParticipationRequestDto> getInfoAboutRequestsForParticipationCurrentUser(@PathVariable Integer userId,
                                                                                   @PathVariable Integer eventId) {
         log.info("Получение информации о запросах на участие в событии текущего пользователя");
@@ -66,7 +64,6 @@ public class EventsPrivateController {
     }
 
     @PatchMapping("/{eventId}/requests")
-//есть
     EventRequestStatusUpdateResult updateStatusOfParticipationEvent(@PathVariable Integer userId,
                                                                     @PathVariable Integer eventId,
                                                                     @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {

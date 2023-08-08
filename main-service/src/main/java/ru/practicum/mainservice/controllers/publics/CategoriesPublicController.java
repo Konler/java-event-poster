@@ -24,7 +24,6 @@ public class CategoriesPublicController {
     }
 
     @GetMapping("/{catId}")
-//есть
     CategoryDto getCategoryById(@PathVariable Integer catId) {
 
         log.info("Получение инфрмации о категории по ее id: {}", catId);

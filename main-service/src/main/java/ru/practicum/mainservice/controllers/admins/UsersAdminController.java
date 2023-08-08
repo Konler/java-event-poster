@@ -21,7 +21,6 @@ public class UsersAdminController {
     private final UserService userService;
 
     @GetMapping
-//Есть
     List<UserDto> getInfoAboutUser(@RequestParam(value = "ids", required = false) List<Integer> ids,
                                    @PositiveOrZero @RequestParam(value = "from", defaultValue = "0") Integer from,
                                    @PositiveOrZero @RequestParam(value = "size", defaultValue = "10") Integer size) {
@@ -29,14 +28,14 @@ public class UsersAdminController {
         return userService.getInfoAboutUser(ids, from, size);
     }
 
-    @PostMapping//есть
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     UserDto addNewUser(@RequestBody @Valid NewUserRequest newUserRequest) {
         log.info("Добавление нового пользователя");
         return userService.addNewUser(newUserRequest);
     }
 
-    @DeleteMapping("/{userId}")//есть
+    @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteUser(@PathVariable Integer userId) {
         log.info("Удаление пользователя");
