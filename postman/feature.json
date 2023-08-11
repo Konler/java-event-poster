@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "59e2a90e-17ef-4948-a001-9603501a2ee7",
+		"_postman_id": "e31779f1-59df-4e08-983c-d91245d1869d",
 		"name": "My \"Explore with me\" Feature comments",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26693097"
 	},
 	"item": [
 		{
@@ -591,8 +592,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([409]);\r",
+											"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
 											"    pm.response.to.be.withBody;\r",
 											"    pm.response.to.be.json;\r",
 											"});"
@@ -647,8 +648,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([409]);\r",
+											"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
 											"    pm.response.to.be.withBody;\r",
 											"    pm.response.to.be.json;\r",
 											"});"
@@ -905,8 +906,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([409]);\r",
+											"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
 											"    pm.response.to.be.withBody;\r",
 											"    pm.response.to.be.json;\r",
 											"});"
@@ -959,8 +960,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([409]);\r",
+											"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
 											"    pm.response.to.be.withBody;\r",
 											"    pm.response.to.be.json;\r",
 											"});"

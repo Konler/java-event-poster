@@ -46,16 +46,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public CommentDto renewalComment(NewCommentDto newCommentDto,Integer userId, Integer commentId) {
+    public CommentDto renewalComment(NewCommentDto newCommentDto, Integer userId, Integer commentId) {
         Comment comment = validateComment(commentId);
         validateUser(userId);
         if (!comment.getAuthor().getId().equals(userId)) {
             log.error("Только автор или администратор может обновить комментарий");
             throw new ConflictException("Только автор или администратор может обновить комментарий");
         }
-        if (newCommentDto.getText() != null) {
-            comment.setText(newCommentDto.getText());
-        }
+        comment.setText(newCommentDto.getText());
         comment.setStatus(CommentStatus.PENDING);
         CommentDto updatedComment = CommentMapper.toCommentDto(commentRepository.save(comment));
         log.info("Комментарий с id {} обновлен", commentId);
@@ -110,9 +108,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CommentDto renewalCommentAdmin(Integer commentId, NewCommentDto newCommentDto) {
         Comment comment = validateComment(commentId);
-        if (newCommentDto.getText() != null) {
-            comment.setText(newCommentDto.getText());
-        }
+        comment.setText(newCommentDto.getText());
         comment.setStatus(CommentStatus.PUBLISHED);
         CommentDto updatedComment = CommentMapper.toCommentDto(commentRepository.save(comment));
         log.info("Комментарий с id {} обновлен администратором", commentId);

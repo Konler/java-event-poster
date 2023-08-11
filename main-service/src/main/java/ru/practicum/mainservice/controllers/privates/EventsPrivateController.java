@@ -30,16 +30,16 @@ public class EventsPrivateController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-        //есть
+
     EventFullDto postEvent(@PathVariable Integer userId,
                            @RequestBody @Valid NewEventDto newEventDto) {
         log.info("Добавление нового события: {}", newEventDto);
         return userService.postEvent(userId, newEventDto);
-        //  return eventsService.postEvent(userId, newEventDto);
+
     }
 
     @GetMapping("/{eventId}")
-        //есть
+
     EventFullDto getFullInfoAboutEventById(@PathVariable Integer userId,
                                            @PathVariable Integer eventId) {
         log.info("Запрос на получение полной информации о событии добавленном текущим пользователем");
@@ -47,7 +47,7 @@ public class EventsPrivateController {
     }
 
     @PatchMapping("/{eventId}")
-        //есть
+
     EventFullDto updateEventAddedByCurrentUser(@PathVariable Integer userId,
                                                @PathVariable Integer eventId,
                                                @RequestBody @Valid UpdateEventUserRequest updateEventUserRequest) {

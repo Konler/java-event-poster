@@ -22,14 +22,18 @@ public class Comment {
     private Integer id;
     @Column(name = "text", nullable = false, length = 7000)
     private String text;
+
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
+
     @Column(name = "created")
     private LocalDateTime created;
+
     @Enumerated(EnumType.STRING)
     private CommentStatus status;
 }
