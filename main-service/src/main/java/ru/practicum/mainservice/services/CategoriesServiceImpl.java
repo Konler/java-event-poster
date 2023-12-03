@@ -59,5 +59,4 @@ public class CategoriesServiceImpl implements CategoriesService {
     public Category findById(Integer id) {
         return categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("Категория не найдеаннас таким id" + id));
     }
-
 }

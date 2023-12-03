@@ -14,24 +14,22 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 public class EventFullDto {
-    Integer id;
-    String annotation;
-    CategoryDto category;
-    Integer confirmedRequests;
+    private Integer id;
+    private String annotation;
+    private CategoryDto category;
+    private Integer confirmedRequests;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime createdOn;
-    String description;
+    private LocalDateTime createdOn;
+    private String description;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime eventDate;
-    UserShortDto initiator;
-    Location location;
-    Boolean paid;
-    Integer participantLimit;
-
-    String publishedOn;
-    Boolean requestModeration;
-    StateOfEvent state;
-    String title;
-    Integer views;
-
+    private LocalDateTime eventDate;
+    private UserShortDto initiator;
+    private Location location;
+    private Boolean paid;
+    private Integer participantLimit;
+    private String publishedOn;
+    private Boolean requestModeration;
+    private StateOfEvent state;
+    private String title;
+    private Integer views;
 }

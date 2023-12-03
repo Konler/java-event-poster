@@ -24,8 +24,6 @@ import java.util.Map;
 @Service
 public class ServerClient {
     private final RestTemplate rest;
-
-
     @Autowired
     public ServerClient(@Value("${statistics-server.url}") String serverUrl, RestTemplateBuilder builder) {
         rest = builder.uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
@@ -37,13 +35,10 @@ public class ServerClient {
         if (response.getStatusCode().is2xxSuccessful()) {
             return response;
         }
-
         ResponseEntity.BodyBuilder responseBuilder = ResponseEntity.status(response.getStatusCode());
-
         if (response.hasBody()) {
             return responseBuilder.body(response.getBody());
         }
-
         return responseBuilder.build();
     }
 

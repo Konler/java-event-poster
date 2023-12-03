@@ -3,7 +3,6 @@ package ru.practicum.model;
 import lombok.experimental.UtilityClass;
 import ru.practicum.EndpointHitDto;
 
-
 @UtilityClass
 public class EndpointHitMapper {
 

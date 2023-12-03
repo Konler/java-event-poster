@@ -47,7 +47,7 @@ public class StatsServiceImpl implements StatsService {
                 .collect(Collectors.toList());
     }
 
-    List<ViewStats> getStatsUnique(LocalDateTime start, LocalDateTime end, String[] uris, Boolean unique) {
+    public List<ViewStats> getStatsUnique(LocalDateTime start, LocalDateTime end, String[] uris, Boolean unique) {
         if (uris == null) {
             return endpointHitsRepository.getStatsUnique(start, end);
         } else {
@@ -55,7 +55,7 @@ public class StatsServiceImpl implements StatsService {
         }
     }
 
-    List<ViewStats> getAll(LocalDateTime start, LocalDateTime end, String[] uris) {
+    public List<ViewStats> getAll(LocalDateTime start, LocalDateTime end, String[] uris) {
         if (uris == null) {
             return endpointHitsRepository.getAll(start, end);
         } else {

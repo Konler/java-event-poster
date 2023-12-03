@@ -9,10 +9,10 @@ import java.util.List;
 @Builder
 @Data
 public class CompilationDto {
-    Integer id;
-    List<EventShortDto> events;
+    private Integer id;
+    private List<EventShortDto> events;
 
-    Boolean pinned;
+    private Boolean pinned;
 
-    String title;
+    private String title;
 }

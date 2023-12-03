@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
         return requestService.createRequest(user, event);
     }
 
-    @Override//
+    @Override
     public List<EventFullDto> searchOfEvents(List<Integer> users, List<String> states, List<Integer> categories, LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size) {
         log.info("Поиск событий по параметрам");
         if (users != null) {
@@ -142,6 +142,4 @@ public class UserServiceImpl implements UserService {
         findUserById(userId);
         return eventsService.getEventsUser(userId, General.toPage(from, size));
     }
-
-
 }

@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Stats {
-    String app;
-    String uri;
-    Integer hits;
+    private String app;
+    private String uri;
+    private Integer hits;
 }
 

@@ -61,10 +61,6 @@ public class EventsServiceImpl implements EventsService {
         if (event.getState().equals(StateOfEvent.PUBLISHED)) {
             throw new ConflictException("Событие уже опубликовано");
         }
-//        if(event.getState().equals(StateOfEvent.CANCELED)){
-//            throw new ConflictException("Событие уже опубликовано");
-//        }
-
         if (updateEventAdminRequest.getEventDate() != null && updateEventAdminRequest.getEventDate().isBefore(LocalDateTime.now())) {
             log.error("Невозможно измененить дату события на уже наступившую");
             throw new UncorrectRequestException("Невозможно измененить дату события на уже наступившую");
@@ -269,7 +265,6 @@ public class EventsServiceImpl implements EventsService {
         BooleanExpression expression;
         PageRequest pageRequest;
         BooleanBuilder builder = new BooleanBuilder();
-
         if (rangeStart == null && rangeEnd == null) {
             rangeStart = LocalDateTime.now();
         } else if (rangeStart != null && rangeEnd != null) {
@@ -427,14 +422,4 @@ public class EventsServiceImpl implements EventsService {
                 .map(EventMapper::toEventShortDto)
                 .collect(Collectors.toList());
     }
-
-//    private void addHit(HttpServletRequest httpServletRequest) {
-//        HitDto endpointHitDto = HitDto.builder()
-//                .app("main-service")
-//                .ip(httpServletRequest.getRemoteAddr())
-//                .uri(httpServletRequest.getRequestURI())
-//                .timestamp(LocalDateTime.now().toString())
-//                .build();
-//        serverClient.(endpointHitDto);
-//    }
 }

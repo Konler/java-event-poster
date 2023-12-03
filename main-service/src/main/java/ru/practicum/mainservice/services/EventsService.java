@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventsService {
-    // List<EventFullDto> searchOfEvents(List<Integer> uses, List<String> states, List<Integer> categories, String rangeStart, String rangeEnd, Integer from, Integer size);
-
     EventFullDto updateEventsAndStatus(Integer eventId, UpdateEventAdminRequest updateEventAdminRequest);
 
     List<Event> findAllByIdIn(List<Integer> eventId);
@@ -25,8 +23,6 @@ public interface EventsService {
     EventFullDto getFullInfoAboutEventById(Integer userId, Integer eventId);
 
     EventFullDto updateEventAddedByCurrentUser(Integer userId, Integer eventId, UpdateEventUserRequest updateEventUserRequest);
-
-    //List<ParticipationRequestDto> getInfoAboutRequestsForParticipationCurrentUser(Integer userId, Integer eventId);
 
     EventRequestStatusUpdateResult updateStatusOfParticipationEvent(Integer userId, Integer eventId, EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest);
 

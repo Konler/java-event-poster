@@ -15,11 +15,11 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NewCompilationDto {
     @Builder.Default
-    List<Integer> events = List.of();
+    private List<Integer> events = List.of();
     @Builder.Default
-    Boolean pinned = false;
+    private Boolean pinned = false;
 
     @NotBlank
     @Size(min = 1, max = 50, message = "Длина заголовка подборки должна быть от 1 до 50")
-    String title;
+    private String title;
 }

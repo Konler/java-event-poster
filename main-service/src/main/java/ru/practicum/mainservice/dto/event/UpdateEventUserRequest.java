@@ -20,18 +20,18 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UpdateEventUserRequest {
     @Size(min = 20, max = 2000, message = "Длина аннотации события должна быть в диапазоне от 20 до 2000")
-    String annotation;
-    Integer category;
+    private String annotation;
+    private Integer category;
     @Size(min = 20, max = 7000, message = "Длина нового описания должна быть в диапазоне от 20 до 7000")
-    String description;
+    private String description;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime eventDate;
-    Location location;
-    Boolean paid;
-    Integer participantLimit;
-    Boolean requestModeration;
+    private LocalDateTime eventDate;
+    private Location location;
+    private Boolean paid;
+    private Integer participantLimit;
+    private Boolean requestModeration;
     @Enumerated(EnumType.STRING)
-    StateForUpdateEventUserRequest stateAction;
+    private StateForUpdateEventUserRequest stateAction;
     @Size(min = 3, max = 120, message = "Длина заголовка должна быть от 3 до 120")
-    String title;
+    private String title;
 }

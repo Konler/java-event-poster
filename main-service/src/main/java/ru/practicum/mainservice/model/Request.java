@@ -17,20 +17,20 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
 
     @Column(name = "created")
-    LocalDateTime created;
+    private LocalDateTime created;
 
     @Column(name = "event_id")
     @JoinColumn(table = "events", name = "id")
-    Integer event;
+    private Integer event;
 
     @Column(name = "requester_id")
     @JoinColumn(table = "users", name = "id")
-    Integer requester;
+    private Integer requester;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    StatusRequest status;
+    private StatusRequest status;
 }

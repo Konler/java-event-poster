@@ -14,12 +14,9 @@ import javax.persistence.*;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-
-    String email;
-
-    String name;
+    private Integer id;
+    private String email;
+    private String name;
 }

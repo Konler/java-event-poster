@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 @Data
 public class CategoryDto {
 
-    Integer id;
+    private Integer id;
     @NotBlank
     @Size(min = 1, max = 50, message = "Название категории должно быть размером от 1 до 50")
-    String name;
+    private String name;
 }

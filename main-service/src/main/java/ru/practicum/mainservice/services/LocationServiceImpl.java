@@ -9,7 +9,6 @@ import ru.practicum.mainservice.repositories.LocationRepository;
 @RequiredArgsConstructor
 public class LocationServiceImpl implements LocationService {
     private final LocationRepository locationRepository;
-
     @Override
     public Location add(Location location) {
         return locationRepository.save(location);

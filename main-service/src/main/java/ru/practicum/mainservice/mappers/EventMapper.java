@@ -12,7 +12,6 @@ import ru.practicum.mainservice.util.General;
 
 import java.time.LocalDateTime;
 
-
 @UtilityClass
 public class EventMapper {
     public EventShortDto fromEventToEventShortDto(Event event) {
@@ -26,7 +25,6 @@ public class EventMapper {
                 .title(event.getTitle())
                 .build();
     }
-
 
     public Event toEvent(User user, Category category, NewEventDto newEventDto) {
         return Event.builder()
@@ -45,7 +43,6 @@ public class EventMapper {
                 .publishedOn(null)
                 .build();
     }
-
 
     public static EventFullDto toEventFullDto(Integer confirmedRequest, Integer views, Event event) {
         return EventFullDto.builder()

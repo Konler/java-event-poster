@@ -7,11 +7,10 @@ import ru.practicum.mainservice.enums.StatusRequest;
 @Builder
 @Data
 public class ParticipationRequestDto {
-    Integer id;
-
-    String created;
-    Integer event;
-    Integer requester;
-    StatusRequest status;
+    private Integer id;
+    private String created;
+    private Integer event;
+    private Integer requester;
+    private StatusRequest status;
 
 }

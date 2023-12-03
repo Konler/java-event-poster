@@ -9,7 +9,7 @@ import java.util.List;
 @Builder
 @Data
 public class EventRequestStatusUpdateRequest {
-    List<Integer> requestIds;
-    StatusOfParticipationEvent status;
+    private List<Integer> requestIds;
+    private StatusOfParticipationEvent status;
 
 }
